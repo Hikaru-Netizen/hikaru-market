@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#062a2e" />
+<title>Hikaru Market — Toko Game Indonesia</title>
+<style>
+:root{--bg:#061f23;--bg2:#08343a;--card:#0a3035;--line:rgba(91,245,235,.24);--cyan:#39efe5;--yellow:#ffd21c;--green:#20d66b;--text:#f7fbfb;--muted:#a9c6c7}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:linear-gradient(180deg,#04191c,#06282c 48%,#041b1e);color:var(--text)}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.16;background-image:radial-gradient(circle at 20% 20%,#39efe5 1px,transparent 1.5px),radial-gradient(circle at 80% 70%,#39efe5 1px,transparent 1.5px);background-size:28px 28px,35px 35px}
+.container{width:min(100% - 28px,1080px);margin:auto}.top{padding:15px 0 8px;text-align:center}.brand{display:flex;align-items:center;justify-content:center;gap:10px}.brand img{width:54px;height:38px;object-fit:contain}.brand-name{font-weight:900;font-size:22px;letter-spacing:.4px}.eyebrow{margin:12px 0 3px;color:var(--yellow);font-size:12px;font-weight:900;letter-spacing:2.4px;text-transform:uppercase}.hero-title{font-size:30px;line-height:1.05;margin:0;font-weight:950;text-transform:uppercase;text-shadow:0 3px 0 #061416}.desc{margin:10px auto 14px;max-width:620px;color:#d0e0e0;font-size:14px;line-height:1.45}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:0 auto 16px;max-width:650px}.stat{padding:9px 5px;border:1px solid rgba(255,255,255,.25);border-radius:13px;background:linear-gradient(180deg,rgba(255,255,255,.12),rgba(255,255,255,.04));backdrop-filter:blur(8px)}.stat b{display:block;font-size:16px;color:#fff}.stat span{font-size:10px;color:#b9d2d3}.stars{color:var(--yellow)}
+.carousel{position:relative;overflow:hidden;border:1px solid var(--line);border-radius:18px;background:#052326;box-shadow:0 12px 35px rgba(0,0,0,.25)}.slides{display:flex;transition:transform .55s ease}.slide{min-width:100%;aspect-ratio:16/9}.slide img{width:100%;height:100%;display:block;object-fit:cover}.dots{position:absolute;bottom:9px;left:50%;transform:translateX(-50%);display:flex;gap:7px}.dot{width:8px;height:8px;border-radius:99px;background:#9bb0b1;opacity:.8}.dot.active{width:21px;background:var(--yellow);opacity:1}
+.section-head{display:flex;align-items:end;justify-content:space-between;margin:22px 2px 10px}.section-head h2{margin:0;font-size:21px}.section-head p{margin:0;color:var(--muted);font-size:11px}.categories{display:flex;gap:8px;overflow-x:auto;padding:2px 0 8px;scrollbar-width:none}.categories::-webkit-scrollbar{display:none}.cat{white-space:nowrap;border:1px solid var(--line);background:rgba(255,255,255,.04);color:#d9eeee;border-radius:12px;padding:9px 13px;font-size:12px;font-weight:800}.cat.active{background:var(--cyan);color:#032126;border-color:var(--cyan)}
+.products{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.product{overflow:hidden;border:1px solid rgba(95,240,230,.18);border-radius:15px;background:linear-gradient(180deg,#0b3439,#07262a);box-shadow:0 8px 24px rgba(0,0,0,.18)}.pic{position:relative;aspect-ratio:1/1;overflow:hidden}.pic img{width:100%;height:100%;display:block;object-fit:cover}.badge{position:absolute;top:7px;left:7px;background:#ef3434;color:white;padding:4px 7px;border-radius:7px;font-size:9px;font-weight:900}.info{padding:9px}.title{font-size:13px;line-height:1.25;font-weight:850;min-height:33px}.meta{color:#8eb4b6;font-size:10px;margin:5px 0}.price{font-size:15px;font-weight:950;color:var(--yellow);margin-bottom:8px}.interest{display:block;width:100%;border:0;border-radius:9px;background:var(--green);color:#032417;font-weight:950;font-size:12px;padding:10px 6px;text-decoration:none;text-align:center;box-shadow:0 5px 15px rgba(32,214,107,.2)}.interest:active{transform:scale(.98)}
+.admin{position:fixed;right:14px;bottom:15px;z-index:20;background:var(--green);color:#052116;border-radius:999px;padding:11px 16px;font-weight:950;font-size:13px;box-shadow:0 10px 25px rgba(0,0,0,.35);text-decoration:none;border:2px solid rgba(255,255,255,.55)}.admin small{font-weight:700;margin-right:4px}.note{margin:18px 0 90px;padding:13px;border:1px dashed var(--line);border-radius:13px;color:#a9c4c5;font-size:11px;line-height:1.5;text-align:center}.footer{text-align:center;color:#719294;font-size:10px;padding:0 0 25px}.nav{position:sticky;top:0;z-index:15;background:rgba(3,25,28,.82);backdrop-filter:blur(12px);border-bottom:1px solid rgba(87,236,227,.13)}.nav-inner{height:46px;display:flex;align-items:center;justify-content:space-between}.mini-brand{font-weight:900;font-size:13px}.mini-brand span{color:var(--yellow)}.nav a{color:#d9eeee;text-decoration:none;font-size:11px;font-weight:800}
+@media(min-width:700px){.hero-title{font-size:42px}.desc{font-size:15px}.products{grid-template-columns:repeat(4,1fr)}.product .title{font-size:14px}.product .price{font-size:16px}.slide{aspect-ratio:16/7}.pic{aspect-ratio:1/1}.container{width:min(100% - 36px,1080px)}}
+
+
+.ml-modal{display:none;position:fixed;inset:0;z-index:55;background:rgba(0,10,12,.78);backdrop-filter:blur(8px);padding:18px;overflow:auto}
+.ml-modal.show{display:flex;align-items:center;justify-content:center}
+.ml-box{width:min(100%,820px);max-height:calc(100vh - 36px);overflow:auto;background:linear-gradient(180deg,#0b3439,#06252a);border:1px solid var(--line);border-radius:18px;box-shadow:0 22px 60px rgba(0,0,0,.5);padding:16px}
+.ml-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:12px}
+.ml-head h2{margin:0;font-size:20px}.ml-head p{margin:4px 0 0;color:var(--muted);font-size:11px}
+.ml-close{border:1px solid var(--line);background:rgba(255,255,255,.06);color:#fff;border-radius:10px;width:36px;height:36px;font-size:20px;cursor:pointer}
+.ml-form{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}.ml-field{display:grid;gap:5px}
+.ml-label{font-size:11px;font-weight:850;color:#d9eeee}.ml-input,.ml-select{width:100%;padding:11px 12px;border-radius:10px;border:1px solid rgba(95,240,230,.25);background:#062126;color:#fff;outline:none;font:inherit;font-size:13px}.ml-input:focus,.ml-select:focus{border-color:var(--cyan);box-shadow:0 0 0 2px rgba(57,239,229,.1)}
+.ml-section{margin:14px 0 8px;font-weight:900;font-size:13px;color:var(--yellow)}
+.ml-search{width:100%;padding:11px 12px;margin-bottom:8px;border-radius:10px;border:1px solid rgba(95,240,230,.25);background:#062126;color:#fff;outline:none;font:inherit;font-size:13px}
+.ml-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;max-height:390px;overflow:auto;padding-right:2px}
+.ml-option{border:1px solid rgba(95,240,230,.18);background:rgba(255,255,255,.04);border-radius:10px;padding:9px;cursor:pointer;text-align:left;color:#fff}.ml-option:hover,.ml-option[data-selected="1"]{border-color:var(--cyan);background:rgba(57,239,229,.1)}.ml-option strong{display:block;font-size:12px;line-height:1.3}.ml-option span{display:block;margin-top:3px;color:var(--yellow);font-size:11px;font-weight:900}
+.ml-submit{width:100%;border:0;border-radius:10px;background:var(--green);color:#032417;font-weight:950;font-size:13px;padding:12px;margin-top:14px;cursor:pointer}
+.ml-help{font-size:10px;color:#8eb4b6;text-align:center;margin:8px 0 0;line-height:1.4}
+@media(max-width:560px){.ml-form{grid-template-columns:1fr}}
+@media(min-width:700px){.ml-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+
+.ff-modal{display:none;position:fixed;inset:0;z-index:50;background:rgba(0,10,12,.78);backdrop-filter:blur(8px);padding:18px;overflow:auto}
+.ff-modal.show{display:flex;align-items:center;justify-content:center}
+.ff-box{width:min(100%,720px);max-height:calc(100vh - 36px);overflow:auto;background:linear-gradient(180deg,#0b3439,#06252a);border:1px solid var(--line);border-radius:18px;box-shadow:0 22px 60px rgba(0,0,0,.5);padding:16px}
+.ff-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:12px}
+.ff-head h2{margin:0;font-size:20px}.ff-head p{margin:4px 0 0;color:var(--muted);font-size:11px}
+.ff-close{border:1px solid var(--line);background:rgba(255,255,255,.06);color:#fff;border-radius:10px;width:36px;height:36px;font-size:20px;cursor:pointer}
+.ff-form{display:grid;gap:10px;margin-bottom:14px}.ff-label{font-size:11px;font-weight:850;color:#d9eeee}.ff-input,.ff-select{width:100%;padding:11px 12px;border-radius:10px;border:1px solid rgba(95,240,230,.25);background:#062126;color:#fff;outline:none;font:inherit;font-size:13px}.ff-input:focus,.ff-select:focus{border-color:var(--cyan);box-shadow:0 0 0 2px rgba(57,239,229,.1)}
+.ff-section{margin:14px 0 8px;font-weight:900;font-size:13px;color:var(--yellow)}
+.ff-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
+.ff-option{border:1px solid rgba(95,240,230,.18);background:rgba(255,255,255,.04);border-radius:10px;padding:9px;cursor:pointer;text-align:left;color:#fff}.ff-option:hover{border-color:var(--cyan);background:rgba(57,239,229,.08)}.ff-option strong{display:block;font-size:12px}.ff-option span{display:block;margin-top:3px;color:var(--yellow);font-size:11px;font-weight:900}
+.ff-submit{width:100%;border:0;border-radius:10px;background:var(--green);color:#032417;font-weight:950;font-size:13px;padding:12px;margin-top:14px;cursor:pointer}
+.ff-help{font-size:10px;color:#8eb4b6;text-align:center;margin:8px 0 0;line-height:1.4}
+@media(min-width:700px){.ff-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+
+/* Checkout pembayaran bersama */
+.checkout-modal{display:none;position:fixed;inset:0;z-index:70;background:rgba(0,10,12,.82);backdrop-filter:blur(9px);padding:18px;overflow:auto}.checkout-modal.show{display:flex;align-items:center;justify-content:center}.checkout-box{width:min(100%,560px);max-height:calc(100vh - 36px);overflow:auto;background:linear-gradient(180deg,#0b3439,#06252a);border:1px solid var(--line);border-radius:18px;box-shadow:0 22px 60px rgba(0,0,0,.5);padding:18px}.checkout-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.checkout-head h2{margin:0;font-size:20px}.checkout-head p{margin:5px 0 0;color:var(--muted);font-size:11px}.checkout-close{border:1px solid var(--line);background:rgba(255,255,255,.06);color:#fff;border-radius:10px;width:36px;height:36px;font-size:20px;cursor:pointer}.checkout-step{margin-top:14px;padding:12px;border:1px solid rgba(95,240,230,.16);border-radius:12px;background:rgba(255,255,255,.035)}.checkout-step h3{margin:0 0 8px;font-size:13px;color:var(--yellow)}.checkout-summary{font-size:12px;line-height:1.7;color:#d9eeee}.checkout-summary b{color:#fff}.qris-wrap{text-align:center}.qris-wrap img{display:block;width:min(100%,300px);max-height:300px;object-fit:contain;margin:8px auto;border-radius:12px;background:#fff;padding:8px}.qris-placeholder{padding:55px 15px;border-radius:12px;background:#fff;color:#111;font-weight:900;font-size:13px;margin:8px auto;max-width:300px}.checkout-note{font-size:10px;color:#8eb4b6;line-height:1.5;text-align:center}.checkout-paid{width:100%;border:0;border-radius:10px;background:var(--green);color:#032417;font-weight:950;font-size:13px;padding:13px;margin-top:10px;cursor:pointer}.required-note{font-size:10px;color:#8eb4b6;margin:-2px 0 4px}.customer-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.customer-grid .full{grid-column:1/-1}@media(max-width:560px){.customer-grid{grid-template-columns:1fr}.customer-grid .full{grid-column:auto}}
+</style>
+</head>
+<body>
+<nav class="nav"><div class="container nav-inner"><div class="mini-brand">Hikaru <span>Market</span></div><a href="#produk">Lihat Produk ↓</a></div></nav>
+<main class="container">
+<header class="top">
+  <div class="brand"><img src="assets/logo.png" alt="Logo Hikaru Market"><div class="brand-name">HIKARU MARKET</div></div>
+  <div class="eyebrow">Toko Game Indonesia</div>
+  <h1 class="hero-title">Semua Kebutuhan Game Ada Di Sini</h1>
+  <p class="desc">Semua Kebutuhan Akun Game Kesayangan Kamu Ada Di Sini</p>
+  <div class="stats">
+    <div class="stat"><b>184rb+</b><span>Pelanggan</span></div>
+    <div class="stat"><b>4 Thn</b><span>Berdiri</span></div>
+    <div class="stat"><b>4,9 <span class="stars">★</span></b><span>Rating</span></div>
+  </div>
+</header>
+
+<section class="carousel" aria-label="Banner promo">
+  <div class="slides" id="slides">
+    <div class="slide"><img src="assets/banner-1.png" alt="Promo Hikaru Market 1"></div>
+    <div class="slide"><img src="assets/banner-2.png" alt="Promo Hikaru Market 2"></div>
+    <div class="slide"><img src="assets/banner-3.png" alt="Promo Hikaru Market 3"></div>
+  </div>
+  <div class="dots" id="dots"></div>
+</section>
+
+<section id="produk">
+  <div class="section-head"><h2>Produk Pilihan</h2><p>Minat? Langsung WhatsApp admin</p></div>
+  <div class="categories">
+    <div class="cat active">Semua</div><div class="cat">Akun Game</div><div class="cat">Mobile Legends</div><div class="cat">Free Fire</div><div class="cat">Rental</div><div class="cat">Jasa Admin</div>
+  </div>
+  <div class="products">
+    <article class="product"><div class="pic"><span class="badge">PALING LARIS</span><img src="assets/category-buy.png" alt="Beli akun game"></div><div class="info"><div class="title">Beli / Bungkus Akun Game</div><div class="meta">Akun game pilihan</div><div class="price">Tanya Harga</div><a class="interest" href="https://wa.me/62887437451298?text=Halo%20Hikaru%20Market%2C%20saya%20minat%20produk%20Beli%20%2F%20Bungkus%20Akun%20Game.%20Mohon%20info%20produk%20yang%20tersedia." target="_blank" rel="noopener">💬 Minat</a></div></article>
+    <article class="product"><div class="pic"><span class="badge">PROMO</span><img src="assets/product-ml.png" alt="Top up Mobile Legends"></div><div class="info"><div class="title">Top Up Mobile Legends</div><div class="meta">Diamond / kebutuhan ML</div><div class="price">Mulai Rp 2.500</div><button class="interest" type="button" onclick="openMLModal()">💎 Pilih Nominal</button></div></article>
+    <article class="product"><div class="pic"><img src="assets/product-ff.png" alt="Top up Free Fire"></div><div class="info"><div class="title">Top Up Free Fire</div><div class="meta">Diamond / kebutuhan FF</div><div class="price">Mulai Rp 1.500</div><button class="interest" type="button" onclick="openFFModal()">💎 Pilih Nominal</button></div></article>
+    <article class="product"><div class="pic"><span class="badge">RENTAL</span><img src="assets/product-rental-ff.png" alt="Rental akun Free Fire"></div><div class="info"><div class="title">Rental Akun Free Fire</div><div class="meta">Akun rental sesuai kebutuhan</div><div class="price">Tanya Harga</div><a class="interest" href="https://wa.me/62887437451298?text=Halo%20Hikaru%20Market%2C%20saya%20minat%20produk%20Rental%20Akun%20Free%20Fire.%20Mohon%20info%20akun%20dan%20harganya." target="_blank" rel="noopener">💬 Minat</a></div></article>
+    <article class="product"><div class="pic"><img src="assets/category-sell.png" alt="Jual lepas akun game"></div><div class="info"><div class="title">Jual / Lepas Akun Game</div><div class="meta">Konsultasi jual akun</div><div class="price">Tanya Admin</div><a class="interest" href="https://wa.me/62887437451298?text=Halo%20Hikaru%20Market%2C%20saya%20minat%20produk%20Jual%20%2F%20Lepas%20Akun%20Game.%20Saya%20ingin%20konsultasi%20untuk%20menjual%20akun." target="_blank" rel="noopener">💬 Minat</a></div></article>
+    <article class="product"><div class="pic"><img src="assets/product-admin.png" alt="Jasa admin"></div><div class="info"><div class="title">Rekber / Jasa Admin</div><div class="meta">Layanan admin 24/7</div><div class="price">Tanya Admin</div><a class="interest" href="https://wa.me/62887437451298?text=Halo%20Hikaru%20Market%2C%20saya%20minat%20produk%20Rekber%20%2F%20Jasa%20Admin.%20Mohon%20info%20ketentuan%20dan%20biayanya." target="_blank" rel="noopener">💬 Minat</a></div></article>
+  </div>
+</section>
+<div class="note">Setiap tombol <b>Minat</b> akan membuka WhatsApp Hikaru Market dan otomatis mengisi pesan sesuai produk yang dipilih.</div>
+<div class="footer">© 2026 Hikaru Market • Toko Game Indonesia</div>
+</main>
+
+<div class="ml-modal" id="mlModal" aria-hidden="true">
+  <div class="ml-box" role="dialog" aria-modal="true" aria-labelledby="mlTitle">
+    <div class="ml-head">
+      <div><h2 id="mlTitle">💎 Top Up Mobile Legends</h2><p>Pilih paket Diamond / pass, lalu isi ID Game dan ID Server Mobile Legends.</p></div>
+      <button class="ml-close" type="button" aria-label="Tutup" onclick="closeMLModal()">×</button>
+    </div>
+    <div class="ml-form">
+      <div class="ml-field"><label class="ml-label" for="mlGameId">ID Game Mobile Legends *</label><input class="ml-input" id="mlGameId" type="text" inputmode="numeric" placeholder="Contoh: 123456789" autocomplete="off"></div>
+      <div class="ml-field"><label class="ml-label" for="mlServerId">ID Server *</label><input class="ml-input" id="mlServerId" type="text" inputmode="numeric" placeholder="Contoh: 1234" autocomplete="off"></div>
+      <div class="ml-field" style="grid-column:1/-1"><label class="ml-label" for="mlProduct">Nominal yang dipilih *</label><select class="ml-select" id="mlProduct"><option value="">-- Pilih nominal --</option></select></div>
+      <div class="ml-field"><label class="ml-label" for="mlName">Nama Pembeli *</label><input class="ml-input" id="mlName" type="text" placeholder="Nama lengkap" autocomplete="name"></div>
+      <div class="ml-field"><label class="ml-label" for="mlEmail">Email *</label><input class="ml-input" id="mlEmail" type="email" placeholder="nama@email.com" autocomplete="email"></div>
+      <div class="ml-field" style="grid-column:1/-1"><label class="ml-label" for="mlWa">Nomor WA *</label><input class="ml-input" id="mlWa" type="tel" inputmode="tel" placeholder="08xxxxxxxxxx" autocomplete="tel"></div>
+    </div>
+    <p class="required-note">* Semua data wajib diisi sebelum pembayaran.</p>
+    <div class="ml-section">🔥 Special Items & Top Up Instant</div>
+    <input class="ml-search" id="mlSearch" type="search" placeholder="Cari Diamond, Weekly Diamond Pass, atau harga..." autocomplete="off">
+    <div class="ml-grid" id="mlGrid"></div>
+    <button class="ml-submit" type="button" onclick="orderML()">💳 Lanjutkan Pembayaran</button>
+    <p class="ml-help">Pastikan ID Game dan ID Server benar sebelum melanjutkan pesanan.</p>
+  </div>
+</div>
+<div class="ff-modal" id="ffModal" aria-hidden="true">
+  <div class="ff-box" role="dialog" aria-modal="true" aria-labelledby="ffTitle">
+    <div class="ff-head">
+      <div><h2 id="ffTitle">💎 Top Up Free Fire</h2><p>Pilih nominal Diamond / membership, lalu isi ID game kamu.</p></div>
+      <button class="ff-close" type="button" aria-label="Tutup" onclick="closeFFModal()">×</button>
+    </div>
+    <div class="ff-form">
+      <label class="ff-label" for="ffGameId">ID Game Free Fire *</label>
+      <input class="ff-input" id="ffGameId" type="text" inputmode="numeric" placeholder="Masukkan ID Free Fire kamu" autocomplete="off">
+      <label class="ff-label" for="ffProduct">Nominal yang dipilih *</label>
+      <select class="ff-select" id="ffProduct">
+        <option value="">-- Pilih nominal --</option>
+      </select>
+      <label class="ff-label" for="ffName">Nama Pembeli *</label>
+      <input class="ff-input" id="ffName" type="text" placeholder="Nama lengkap" autocomplete="name">
+      <label class="ff-label" for="ffEmail">Email *</label>
+      <input class="ff-input" id="ffEmail" type="email" placeholder="nama@email.com" autocomplete="email">
+      <label class="ff-label" for="ffWa">Nomor WA *</label>
+      <input class="ff-input" id="ffWa" type="tel" inputmode="tel" placeholder="08xxxxxxxxxx" autocomplete="tel">
+    </div>
+    <p class="required-note">* Semua data wajib diisi sebelum pembayaran.</p>
+    <div class="ff-section">💎 Flash Sale & Membership Instan</div>
+    <div class="ff-grid" id="ffMembershipGrid"></div>
+    <div class="ff-section">⚡ Top Up Instan</div>
+    <div class="ff-grid" id="ffDiamondGrid"></div>
+    <button class="ff-submit" type="button" onclick="orderFF()">💳 Lanjutkan Pembayaran</button>
+    <p class="ff-help">Pastikan ID game benar sebelum melanjutkan pesanan.</p>
+  </div>
+</div>
+<div class="checkout-modal" id="checkoutModal" aria-hidden="true">
+  <div class="checkout-box" role="dialog" aria-modal="true" aria-labelledby="checkoutTitle">
+    <div class="checkout-head"><div><h2 id="checkoutTitle">💳 Pembayaran QRIS</h2><p>Periksa pesanan, lalu lakukan pembayaran sesuai total.</p></div><button class="checkout-close" type="button" onclick="closeCheckout()">×</button></div>
+    <div class="checkout-step"><h3>📋 Ringkasan Pesanan</h3><div class="checkout-summary" id="checkoutSummary"></div></div>
+    <div class="checkout-step qris-wrap"><h3>📲 Scan QRIS untuk Membayar</h3><div id="qrisArea"></div><p class="checkout-note">Setelah pembayaran berhasil, klik tombol <b>Saya Sudah Bayar</b>. WhatsApp Hikaru Market akan terbuka dengan pesan otomatis. Lampirkan bukti transfer di WhatsApp sebelum mengirim.</p><button class="checkout-paid" type="button" onclick="paidAndWhatsApp()">✅ Saya Sudah Bayar — Lanjut ke WhatsApp</button></div>
+  </div>
+</div>
+<a class="admin" href="https://wa.me/62887437451298?text=Halo%20Hikaru%20Market%2C%20saya%20ingin%20bertanya%20tentang%20produk." target="_blank" rel="noopener"><small>💬</small> Tanya Admin</a>
+<script>
+const slides=document.getElementById('slides'), dots=document.getElementById('dots');let i=0,total=3;
+for(let n=0;n<total;n++){const d=document.createElement('span');d.className='dot'+(n===0?' active':'');d.onclick=()=>go(n);dots.appendChild(d)}
+function go(n){i=n;slides.style.transform=`translateX(-${i*100}%)`;[...dots.children].forEach((d,k)=>d.classList.toggle('active',k===i))}
+setInterval(()=>go((i+1)%total),4500);
+
+
+const mlProducts=[["Weekly Diamond Pass", "Rp 35.000"], ["2x Weekly Diamond Pass", "Rp 69.500"], ["3x Weekly Diamond Pass", "Rp 103.500"], ["4x Weekly Diamond Pass", "Rp 137.500"], ["5x Weekly Diamond Pass", "Rp 171.500"], ["Twilight Pass", "Rp 178.500"], ["5 (5+0) Diamonds", "Rp 2.500"], ["10 (9+1) Diamonds", "Rp 4.500"], ["11 (10+1) Diamonds", "Rp 4.800"], ["12 (11+1) Diamonds", "Rp 5.500"], ["14 (13+1) Diamonds", "Rp 6.000"], ["15 (15+0) Diamonds", "Rp 6.500"], ["19 (17+2) Diamonds", "Rp 8.000"], ["22 (20+2) Diamonds", "Rp 8.500"], ["28 (25+3) Diamonds", "Rp 11.000"], ["35 (32+3) Diamonds", "Rp 14.000"], ["36 (33+3) Diamonds", "Rp 14.200"], ["42 (38+4) Diamonds", "Rp 15.500"], ["44 (40+4) Diamonds", "Rp 16.000"], ["100 (50+50) Diamonds - First Top Up", "Rp 17.500"], ["46 (42+4) Diamonds", "Rp 18.000"], ["56 (51+5) Diamonds", "Rp 19.500"], ["59 (53+6) Diamonds", "Rp 21.000"], ["70 (64+6) Diamonds", "Rp 25.000"], ["86 (78+8) Diamonds", "Rp 25.200"], ["74 (67+7) Diamonds", "Rp 26.000"], ["85 (77+8) Diamonds", "Rp 29.500"], ["88 (80+8) Diamonds", "Rp 31.000"], ["Weekly Diamond Pass", "Rp 31.500"], ["112 (102+10) Diamonds", "Rp 37.500"], ["110 (100+10) Diamonds", "Rp 38.500"], ["113 (102+11) Diamonds", "Rp 39.000"], ["140 (127+13) Diamonds", "Rp 48.500"], ["300 (150+150) Diamonds - First Top Up", "Rp 48.600"], ["172 (156+16) Diamonds", "Rp 48.800"], ["148 (134+14) Diamonds", "Rp 50.500"], ["170 (154+16) Diamonds", "Rp 56.500"], ["176 (160+16) Diamonds", "Rp 59.500"], ["257 (234+23) Diamonds", "Rp 71.500"], ["223 (203+20) Diamonds", "Rp 72.500"], ["222 (200+22) Diamonds", "Rp 74.000"], ["500 (250+250) Diamonds - First Top Up", "Rp 78.500"], ["240 (217+23) Diamonds", "Rp 78.600"], ["241 (218+23) Diamonds", "Rp 79.500"], ["277 (250+27) Diamonds", "Rp 92.000"], ["284 (257+27) Diamonds", "Rp 93.000"], ["284 (254+30) Diamonds", "Rp 94.500"], ["344 (312+32) Diamonds", "Rp 94.800"], ["296 (256+40) Diamonds", "Rp 96.500"], ["305 (276+29) Diamonds", "Rp 100.000"], ["336 (303+33) Diamonds", "Rp 107.000"], ["429 (390+39) Diamonds", "Rp 117.000"], ["355 (317+38) Diamonds", "Rp 117.000"], ["370 (333+37) Diamonds", "Rp 121.000"], ["384 (346+38) Diamonds", "Rp 124.500"], ["406 (366+40) Diamonds", "Rp 132.000"], ["408 (367+41) Diamonds", "Rp 132.500"], ["514 (468+46) Diamonds", "Rp 140.000"], ["429 (383+46) Diamonds", "Rp 140.100"], ["Twilight Pass", "Rp 154.000"], ["1000 (500+500) Diamonds - First Top Up", "Rp 157.000"], ["600 (546+54) Diamonds", "Rp 163.500"], ["518 (467+51) Diamonds", "Rp 168.000"], ["570 (504+66) Diamonds", "Rp 177.000"], ["554 (500+54) Diamonds", "Rp 179.000"], ["568 (503+65) Diamonds", "Rp 180.000"], ["706 (625+81) Diamonds", "Rp 186.500"], ["716 (637+79) Diamonds", "Rp 228.000"], ["878 (781+97) Diamonds", "Rp 233.000"], ["716 (633+83) Diamonds", "Rp 233.100"], ["750 (676+74) Diamonds", "Rp 239.000"], ["790 (703+87) Diamonds", "Rp 253.000"], ["963 (859+104) Diamonds", "Rp 256.500"], ["875 (774+101) Diamonds", "Rp 276.000"], ["874 (779+95) Diamonds", "Rp 279.000"], ["1050 (937+113) Diamonds", "Rp 280.000"], ["1220 (1093+127) Diamonds", "Rp 326.500"], ["1067 (953+114) Diamonds", "Rp 338.500"], ["1048 (936+112) Diamonds", "Rp 339.000"], ["1084 (940+144) Diamonds", "Rp 353.000"], ["1163 (1007+156) Diamonds", "Rp 354.500"], ["1136 (1006+130) Diamonds", "Rp 360.000"], ["1412 (1250+162) Diamonds", "Rp 373.500"], ["1358 (1206+152) Diamonds", "Rp 435.500"], ["1669 (1484+185) Diamonds", "Rp 443.500"], ["1446 (1252+194) Diamonds", "Rp 465.500"], ["1506 (1339+167) Diamonds", "Rp 477.500"], ["1704 (1509+195) Diamonds", "Rp 540.500"], ["2195 (1860+335) Diamonds", "Rp 557.000"], ["1770 (1544+226) Diamonds", "Rp 573.000"], ["2010 (1708+302) Diamonds", "Rp 600.500"], ["2539 (2172+367) Diamonds", "Rp 651.000"], ["2398 (2015+383) Diamonds", "Rp 710.000"], ["2380 (2041+339) Diamonds", "Rp 720.500"], ["2901 (2485+416) Diamonds", "Rp 744.000"], ["2578 (2211+367) Diamonds", "Rp 780.500"], ["2855 (2461+394) Diamonds", "Rp 874.500"], ["3688 (3099+589) Diamonds", "Rp 930.000"], ["2976 (2501+475) Diamonds", "Rp 935.000"], ["3146 (2714+432) Diamonds", "Rp 961.000"], ["3423 (2964+459) Diamonds", "Rp 1.057.500"], ["4394 (3724+670) Diamonds", "Rp 1.116.500"], ["3738 (3247+491) Diamonds", "Rp 1.152.000"], ["4020 (3416+604) Diamonds", "Rp 1.201.000"], ["5532 (4649+883) Diamonds", "Rp 1.405.000"], ["4830 (4003+827) Diamonds", "Rp 1.441.000"], ["4856 (4027+829) Diamonds", "Rp 1.468.500"], ["4958 (4252+706) Diamonds", "Rp 1.483.500"], ["5052 (4203+849) Diamonds", "Rp 1.514.000"], ["6238 (5274+964) Diamonds", "Rp 1.591.500"], ["5398 (4506+892) Diamonds", "Rp 1.621.500"], ["6042 (5035+1007) Diamonds", "Rp 1.775.500"], ["5966 (5009+957) Diamonds", "Rp 1.802.000"], ["6030 (5124+906) Diamonds", "Rp 1.802.000"], ["6000 (5137+863) Diamonds", "Rp 1.935.500"], ["7727 (6509+1218) Diamonds", "Rp 1.962.500"], ["6840 (5711+1129) Diamonds", "Rp 2.042.000"], ["7210 (6044+1166) Diamonds", "Rp 2.177.000"], ["7685 (6464+1221) Diamonds", "Rp 2.316.000"], ["9288 (7740+1548) Diamonds", "Rp 2.333.000"], ["7502 (6252+1250) Diamonds", "Rp 2.333.000"], ["8040 (6832+1208) Diamonds", "Rp 2.402.500"], ["8850 (7419+1431) Diamonds", "Rp 2.642.500"], ["9660 (8006+1654) Diamonds", "Rp 2.882.500"], ["14820 (12389+2431) Diamonds", "Rp 3.738.000"], ["14490 (12009+2481) Diamonds", "Rp 4.324.500"], ["18576 (15480+3096) Diamonds", "Rp 4.666.000"], ["16080 (13664+2416) Diamonds", "Rp 4.805.500"], ["20100 (17080+3020) Diamonds", "Rp 6.006.500"], ["27864 (23220+4644) Diamonds", "Rp 6.999.500"]];
+
+function buildMLOptions(filter=''){
+  const select=document.getElementById('mlProduct');
+  const grid=document.getElementById('mlGrid');
+  const current=select.value;
+  grid.innerHTML='';
+  [...select.options].slice(1).forEach(o=>o.remove());
+  const q=filter.trim().toLowerCase();
+  mlProducts.forEach(([name,price])=>{
+    if(q && !(name+' '+price).toLowerCase().includes(q)) return;
+    const value=name+' — '+price;
+    const b=document.createElement('button');
+    b.type='button'; b.className='ml-option';
+    b.innerHTML='<strong>'+name+'</strong><span>'+price+'</span>';
+    b.onclick=()=>{select.value=value; document.querySelectorAll('.ml-option').forEach(x=>x.removeAttribute('data-selected')); b.setAttribute('data-selected','1')};
+    grid.appendChild(b);
+    const o=document.createElement('option'); o.value=value; o.textContent=value; select.appendChild(o);
+  });
+  if(current && [...select.options].some(o=>o.value===current)) select.value=current;
+}
+buildMLOptions();
+document.getElementById('mlSearch').addEventListener('input',e=>buildMLOptions(e.target.value));
+
+function openMLModal(){
+  document.getElementById('mlModal').classList.add('show');
+  document.getElementById('mlModal').setAttribute('aria-hidden','false');
+  document.body.style.overflow='hidden';
+  setTimeout(()=>document.getElementById('mlGameId').focus(),50);
+}
+function closeMLModal(){
+  document.getElementById('mlModal').classList.remove('show');
+  document.getElementById('mlModal').setAttribute('aria-hidden','true');
+  document.body.style.overflow='';
+}
+document.getElementById('mlModal').addEventListener('click',e=>{if(e.target.id==='mlModal')closeMLModal()});
+
+function getCustomer(prefix){
+  return {name:document.getElementById(prefix+'Name').value.trim(),email:document.getElementById(prefix+'Email').value.trim(),wa:document.getElementById(prefix+'Wa').value.trim()};
+}
+function validCustomer(c){
+  if(!c.name){alert('Silakan isi Nama Pembeli.');return false}
+  if(!c.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(c.email)){alert('Silakan isi Email yang valid.');return false}
+  if(!c.wa){alert('Silakan isi Nomor WA.');return false}
+  return true;
+}
+let checkoutOrder=null;
+const QRIS_IMAGE='assets/qris.png'; // Ganti file ini dengan QRIS milik Anda.
+function showCheckout(order){
+  checkoutOrder=order;
+  document.getElementById('checkoutSummary').innerHTML=
+    '<b>Game:</b> '+escapeHtml(order.game)+'<br>'+
+    '<b>Produk:</b> '+escapeHtml(order.product)+'<br>'+
+    '<b>Harga:</b> '+escapeHtml(order.price)+'<br>'+
+    (order.server?'<b>ID Game:</b> '+escapeHtml(order.id)+'<br><b>ID Server:</b> '+escapeHtml(order.server)+'<br>':'<b>ID Game:</b> '+escapeHtml(order.id)+'<br>')+
+    '<b>Nama:</b> '+escapeHtml(order.customer.name)+'<br><b>Email:</b> '+escapeHtml(order.customer.email)+'<br><b>No. WA:</b> '+escapeHtml(order.customer.wa);
+  const area=document.getElementById('qrisArea');
+  area.innerHTML='<img src="'+QRIS_IMAGE+'" alt="QRIS Hikaru Market" onerror="this.outerHTML=\'<div class="qris-placeholder">QRIS BELUM DIPASANG<br><small>Tambahkan file assets/qris.png</small></div>\'">';
+  document.getElementById('checkoutModal').classList.add('show');document.getElementById('checkoutModal').setAttribute('aria-hidden','false');document.body.style.overflow='hidden';
+}
+function closeCheckout(){document.getElementById('checkoutModal').classList.remove('show');document.getElementById('checkoutModal').setAttribute('aria-hidden','true');document.body.style.overflow='';}
+function escapeHtml(v){return String(v).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;',"'":'&#39;'}[m]))}
+function orderML(){
+  const id=document.getElementById('mlGameId').value.trim(), server=document.getElementById('mlServerId').value.trim(), product=document.getElementById('mlProduct').value, c=getCustomer('ml');
+  if(!id){alert('Silakan isi ID Game Mobile Legends terlebih dahulu.');return} if(!server){alert('Silakan isi ID Server Mobile Legends terlebih dahulu.');return} if(!product){alert('Silakan pilih nominal Diamond atau pass.');return} if(!validCustomer(c))return;
+  const parts=product.split(' — '); showCheckout({game:'Mobile Legends',id,server,product:parts[0],price:parts.slice(1).join(' — '),customer:c});
+}
+
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeMLModal(); closeFFModal()}});
+
+const ffMemberships=[
+  ["20 Diamonds","Rp 4.500"],
+  ["Member Mingguan","Rp 32.500"],
+  ["BP Card","Rp 48.000"],
+  ["Member Bulanan","Rp 95.000"]
+];
+const ffDiamonds=[
+  ["5 Diamonds","Rp 1.500"],["10 Diamonds","Rp 2.500"],["12 Diamonds","Rp 2.500"],["25 Diamonds","Rp 5.500"],
+  ["30 Diamonds","Rp 6.500"],["40 Diamonds","Rp 8.500"],["50 Diamonds","Rp 8.500"],["55 Diamonds","Rp 9.500"],
+  ["70 Diamonds","Rp 10.500"],["75 Diamonds","Rp 11.500"],["80 Diamonds","Rp 12.500"],["90 Diamonds","Rp 14.500"],
+  ["100 Diamonds","Rp 16.500"],["120 Diamonds","Rp 18.500"],["140 Diamonds","Rp 20.500"],["145 Diamonds","Rp 21.500"],
+  ["150 Diamonds","Rp 22.500"],["160 Diamonds","Rp 24.500"],["170 Diamonds","Rp 26.500"],["190 Diamonds","Rp 28.500"],
+  ["210 Diamonds","Rp 30.500"],["280 Diamonds","Rp 41.000"],["300 Diamonds","Rp 45.000"],["355 Diamonds","Rp 51.000"],
+  ["360 Diamonds","Rp 52.000"],["375 Diamonds","Rp 55.000"],["405 Diamonds","Rp 59.000"],["400 Diamonds","Rp 60.000"],
+  ["425 Diamonds","Rp 61.000"],["475 Diamonds","Rp 69.000"],["495 Diamonds","Rp 71.000"],["500 Diamonds","Rp 72.000"],
+  ["510 Diamonds","Rp 74.000"],["545 Diamonds","Rp 79.000"],["565 Diamonds","Rp 81.000"],["635 Diamonds","Rp 91.000"],
+  ["720 Diamonds","Rp 101.000"],["725 Diamonds","Rp 102.000"],["740 Diamonds","Rp 105.000"],["770 Diamonds","Rp 109.000"],
+  ["790 Diamonds","Rp 111.000"],["860 Diamonds","Rp 121.000"],["930 Diamonds","Rp 131.000"],["1000 Diamonds","Rp 141.000"],
+  ["1075 Diamonds","Rp 151.000"],["1440 Diamonds","Rp 201.000"],["1450 Diamonds","Rp 201.000"],["2000 Diamonds","Rp 280.000"],
+  ["2020 Diamonds","Rp 284.000"],["2140 Diamonds","Rp 300.000"],["2180 Diamonds","Rp 301.000"],["2720 Diamonds","Rp 380.000"],
+  ["3640 Diamonds","Rp 500.000"],["7290 Diamonds","Rp 999.000"],["36500 Diamonds","Rp 4.999.000"],["73100 Diamonds","Rp 9.999.000"]
+];
+
+function buildFFOptions(){
+  const select=document.getElementById('ffProduct');
+  const mg=document.getElementById('ffMembershipGrid');
+  const dg=document.getElementById('ffDiamondGrid');
+  const add=(arr,grid)=>arr.forEach(([name,price])=>{
+    const value=name+" — "+price;
+    const b=document.createElement('button');
+    b.type='button'; b.className='ff-option';
+    b.innerHTML='<strong>'+name+'</strong><span>'+price+'</span>';
+    b.onclick=()=>{select.value=value; document.querySelectorAll('.ff-option').forEach(x=>x.removeAttribute('data-selected')); b.setAttribute('data-selected','1');};
+    grid.appendChild(b);
+    const o=document.createElement('option'); o.value=value; o.textContent=name+" — "+price; select.appendChild(o);
+  });
+  add(ffMemberships,mg); add(ffDiamonds,dg);
+}
+buildFFOptions();
+
+function openFFModal(){
+  document.getElementById('ffModal').classList.add('show');
+  document.getElementById('ffModal').setAttribute('aria-hidden','false');
+  document.body.style.overflow='hidden';
+  setTimeout(()=>document.getElementById('ffGameId').focus(),50);
+}
+function closeFFModal(){
+  document.getElementById('ffModal').classList.remove('show');
+  document.getElementById('ffModal').setAttribute('aria-hidden','true');
+  document.body.style.overflow='';
+}
+document.getElementById('ffModal').addEventListener('click',e=>{if(e.target.id==='ffModal')closeFFModal()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeFFModal()});
+
+function orderFF(){
+  const id=document.getElementById('ffGameId').value.trim(), product=document.getElementById('ffProduct').value, c=getCustomer('ff');
+  if(!id){alert('Silakan isi ID Game Free Fire terlebih dahulu.');return} if(!product){alert('Silakan pilih nominal Diamond atau membership.');return} if(!validCustomer(c))return;
+  const parts=product.split(' — '); showCheckout({game:'Free Fire',id,product:parts[0],price:parts.slice(1).join(' — '),customer:c});
+}
+function paidAndWhatsApp(){
+  if(!checkoutOrder)return; const o=checkoutOrder, c=o.customer;
+  let msg='Halo Hikaru Market, saya sudah melakukan pembayaran untuk pesanan Top Up '+o.game+'.\n\nNama: '+c.name+'\nEmail: '+c.email+'\nNo. WA: '+c.wa+'\nGame: '+o.game+'\nID Game: '+o.id+(o.server?'\nID Server: '+o.server:'')+'\nProduk: '+o.product+'\nHarga: '+o.price+'\n\nSaya sudah bayar melalui QRIS. Saya akan melampirkan bukti transfer di chat ini. Mohon diproses.';
+  window.open('https://wa.me/62887437451298?text='+encodeURIComponent(msg),'_blank','noopener');
+}
+document.getElementById('checkoutModal').addEventListener('click',e=>{if(e.target.id==='checkoutModal')closeCheckout()});
+</script>
+</body></html>
